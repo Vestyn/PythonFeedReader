@@ -35,7 +35,7 @@ To use the program with pre-built URLs:
 python3 rss_project.py
 ```
 
-Current (01/2020) menu of pre-built options:
+## Current (01/2020) menu of pre-built options:
 
 1. BBC News
 2. CNN Top Stories
