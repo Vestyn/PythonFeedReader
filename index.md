@@ -1,37 +1,52 @@
-## Welcome to GitHub Pages
+# RSS Project
+This project was created during a Scripting Languages course taught at my uni. It's purpose (for now) is to print the top 5 stories from a given RSS feed. I plan on expanding this project a bit more to include some additional functionality and ease-of-use. Stay tuned! -V
 
-You can use the [editor on GitHub](https://github.com/Vestyn/PythonFeedReader/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+# Prereqs
+This project uses python3 and the "feedparser" module to analyze and format feed data (.xml) for human eyes.
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
-
-### Markdown
-
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
-
+## Python
+Python3 is used in this project and is (normally) already installed on linux machines.
+To view your current python version in Linux:
 ```markdown
-Syntax highlighted code block
-
-# Header 1
-## Header 2
-### Header 3
-
-- Bulleted
-- List
-
-1. Numbered
-2. List
-
-**Bold** and _Italic_ and `Code` text
-
-[Link](url) and ![Image](src)
+python3 -v
+```
+or
+```markdown
+python3 --version
+```
+### Install the latest version using apt
+To download the latest version with apt:
+```markdown
+sudo apt-get upgrade python3
+```
+### Install required modules (feedparser)
+You can install feedparser with pip by running the following command:
+```markdown
+pip3 install feedparser
 ```
 
-For more details see [GitHub Flavored Markdown](https://guides.github.com/features/mastering-markdown/).
+# Usage
+To use the program with a custom URL:
+```markdown
+python3 rss_project.py [URL]
+```
+To use the program with pre-built URLs: 
+```markdown
+python3 rss_project.py
+```
 
-### Jekyll Themes
+## Current (01/2020) menu of pre-built options:
 
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Vestyn/PythonFeedReader/settings). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
+1. BBC News
+2. CNN Top Stories
+3. ESPN
+4. Fox News - Latest
+5. LifeHacker
+6. New York Times
+7. NPR Top Stories
+8. Reddit r/news
+9. Reuters Financial News
+10. Wall Street Journal - World News
 
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://github.com/contact) and we’ll help you sort it out.
+# Disclaimer
+This project was inspired by the Mr. Robot television series. Feel free to use it as you see fit! <3
