@@ -5,11 +5,19 @@ This project was created during a Scripting Languages course taught at my uni. I
 This project uses the "feedparser" module to analyze and format feed data (.xml) for human eyes.
 
 You can install feedparser with pip by running the following command:
+```markdown
 pip3 install feedparser
+```
 
 # Usage
-To use the program with a custom URL: 'python rss_project.py [URL]'
-To use the program with pre-built URLs: 'python rss_project.py'
+To use the program with a custom URL:
+```markdown
+python rss_project.py [URL]
+```
+To use the program with pre-built URLs: 
+```markdown
+python rss_project.py
+```
 
 Current (01/2020) menu of pre-built options:
 
