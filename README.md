@@ -47,6 +47,7 @@ python3 rss_project.py
 8. Reddit r/news
 9. Reuters Financial News
 10. Wall Street Journal - World News
+11. Threatpost
 
 # Disclaimer
 This project was inspired by the Mr. Robot television series. Feel free to use it as you see fit! <3
