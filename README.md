@@ -28,11 +28,11 @@ pip3 install feedparser
 # Usage
 To use the program with a custom URL:
 ```markdown
-python3 rss_project.py [URL]
+python3 PythonFeedReader.py [URL]
 ```
 To use the program with pre-built URLs: 
 ```markdown
-python3 rss_project.py
+python3 PythonFeedReader.py
 ```
 
 ## Current (01/2020) menu of pre-built options:
