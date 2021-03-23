@@ -21,7 +21,7 @@ feeds = {
     8:"https://www.reddit.com/r/news/.rss", 
     9:"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15", 
     10:"https://feeds.a.dj.com/rss/RSSWorldNews.xml",
-    11:"https://threatpost.com/feed/"
+    11:"https://threatpost.com/feed/",
     12:"https://www.bleepingcomputer.com/feed/"
 }
 
