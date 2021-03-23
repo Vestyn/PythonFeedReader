@@ -22,6 +22,7 @@ feeds = {
     9:"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15", 
     10:"https://feeds.a.dj.com/rss/RSSWorldNews.xml",
     11:"https://threatpost.com/feed/"
+    12:"https://www.bleepingcomputer.com/feed/"
 }
 
 # Function to parse and print feed articles
@@ -92,6 +93,7 @@ def getInput():
     9. Reuters Financial News
     10. Wall Street Journal - World News
     11. Threatpost
+    12. Bleeping Computer - Latest
     Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): """)
 
     return menu_choice
