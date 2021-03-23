@@ -5,9 +5,20 @@ import sys                  # Used to obtain arguments from the cli
 # To Dos:
 #           Expand RSS feed library (Maybe find a library online to import feed urls from?)
 #           Create local feed database? (Users can utlize a local database containing a list of feed urls, allowing them to customize feeds)
-#           Create a welcome message
+#               Create empty 'feeds' dictionary and append it by iterating through a local file containing a custom list of feed URLs
 #           Create handler for option 0 (custom URL)
 #           Create advanced menu for feed topics (finance, world news, security news, etc.)
+
+# Banner and welcome message
+print("""
+..................................................................................................................................................
+..#####...##..##..######..##..##...####...##..##..........######..######..######..#####...........#####...######...####...#####...######..#####...
+..##..##...####.....##....##..##..##..##..###.##..........##......##......##......##..##..........##..##..##......##..##..##..##..##......##..##..
+..#####.....##......##....######..##..##..##.###..........####....####....####....##..##..........#####...####....######..##..##..####....#####...
+..##........##......##....##..##..##..##..##..##..........##......##......##......##..##..........##..##..##......##..##..##..##..##......##..##..
+..##........##......##....##..##...####...##..##..........##......######..######..#####...........##..##..######..##..##..#####...######..##..##..
+..................................................................................................................................................
+""")
 
 # Dictionary to contain default RSS feed URLs
 feeds = {
