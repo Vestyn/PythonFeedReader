@@ -18,6 +18,12 @@ print("""
 ..##........##......##....##..##..##..##..##..##..........##......##......##......##..##..........##..##..##......##..##..##..##..##......##..##..
 ..##........##......##....##..##...####...##..##..........##......######..######..#####...........##..##..######..##..##..#####...######..##..##..
 ..................................................................................................................................................
+
+This project was created during a Scripting Languages course taught at my uni. 
+It's purpose (for now) is to print the top 5 stories from a given RSS feed. 
+I plan on expanding this project a bit more to include some additional functionality and ease-of-use. 
+Stay tuned! 
+-V
 """)
 
 # Dictionary to contain default RSS feed URLs
