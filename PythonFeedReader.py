@@ -6,7 +6,6 @@ import sys                  # Used to obtain arguments from the cli
 #           Expand RSS feed library (Maybe find a library online to import feed urls from?)
 #           Create local feed database? (Users can utlize a local database containing a list of feed urls, allowing them to customize feeds)
 #               Create empty 'feeds' dictionary and append it by iterating through a local file containing a custom list of feed URLs
-#           Create handler for option 0 (custom URL)
 #           Create advanced menu for feed topics (finance, world news, security news, etc.) 
 
 # Banner and welcome message
@@ -119,9 +118,14 @@ def menu():
 
 # Function to display menu and obtain user selection
 def getInput():
+    # Display menu
     menu()
+
+    # User input
     menu_choice = input('Enter the number of the RSS feed you want to view ("exit" or CTRL+C to exit): ')
     num_feeds = input('How many articles would you like to view? (Default is 5): ')
+
+    # Values returned are a tuple
     return menu_choice, num_feeds
       
 # Check for arguments in the cli
@@ -143,31 +147,75 @@ else:
     # Create a loop for continuous program use
     while choice != 'exit':
         try:
+            # Checks if the menu_choice number is a valid number between 1 and the length of the feeds dictionary
             if int(choice[0]) in range(len(feeds) + 1):
-                if choice[1] is "":
+                # Checks if menu_choice number is indicative of a custom URL with default number of articles (5)
+                if choice[0] == '0' and choice[1] == '':
+
+                    # Prompt user for custom feed URL
+                    custom_URL = input('Please enter the URL of your custom feed (without quotes): ')
+
                     # parseFeed params = feed, numFeeds
-                    parseFeed(feedparser.parse(feeds[int(choice[0])]), 5)
+                    # Use default value of 5 for numFeeds
+                    parseFeed(feedparser.parse(custom_URL), 5)
+
+                    # Prompt user to continue or terminate program
                     choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
-                    if choice is "y":
+                    if choice == "y":
+                        # Redisplays menu and prompts for user input
                         choice = getInput()
-                else:
-                    parseFeed(feedparser.parse(feeds[int(choice[0])]), int(choice[1]))
+
+                # Checks if menu_choice number is indicative of a custom URL with custom number of articles        
+                elif choice[0] == '0' and choice[1]:
+
+                    # Prompt user for custom feed URL
+                    custom_URL = input('Please enter the URL of your custom feed (without quotes): ')
+
+                    # Uses custom value for numFeeds
+                    parseFeed(feedparser.parse(custom_URL), int(choice[1]))
+
+                    # Prompt user to continue or terminate program
                     choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
-                    if choice is "y":
+                    if choice == "y":
+                        # Redisplays menu and prompts for user input
+                        choice = getInput()
+
+                # Checks for default number of articles with built-in menu_choice     
+                elif choice [1] == "":
+
+                    # Use default value of 5 for numFeeds
+                    parseFeed(feedparser.parse(feeds[int(choice[0])]), 5)
+
+                    # Prompt user to continue or terminate program
+                    choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
+                    if choice == "y":
+                        # Redisplays menu and prompts for user input
+                        choice = getInput()
+                
+                # Uses built-in menu_choice with custom number of articles
+                else:
+
+                    # Use custom value for numFeeds
+                    parseFeed(feedparser.parse(feeds[int(choice[0])]), int(choice[1]))
+
+                    # Prompt user to continue or terminate program
+                    choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
+                    if choice == "y":
+                        # Redisplays menu and prompts for user input
                         choice = getInput()
             else:
                 # Error handling: Request new entry
                 print('\nERROR! Invalid input! Please enter an integer or type "exit" to exit')
                 print('\nRedisplaying menu...')
-                # Redisplay menu
+                # Redisplay menu and prompts for user input
                 choice = getInput()
         except:
-             # Error handling: Request new entry
-                print('''
+            # Error handling / Troubleshooting
+            print('''
                 Exception triggered. Could be a bad URL or invalid number of articles.
                 Check your URL or try changing the number of articles to a smaller number.
                 Exiting program.
-                ''')
-                exit()
+            ''')
+            exit()
             
 # Thanks for stopping by! <3
