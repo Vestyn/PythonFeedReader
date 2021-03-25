@@ -28,19 +28,19 @@ Stay tuned!
 
 # Dictionary to contain default RSS feed URLs
 feeds = {
-    1:"http://feeds.bbci.co.uk/news/rss.xml?edition=us", 
-    2:"http://rss.cnn.com/rss/cnn_topstories.rss", 
-    3:"https://www.espn.com/espn/rss/news", 
-    4:"http://feeds.foxnews.com/foxnews/latest/?feed=rss", 
-    5:"https://lifehacker.com/rss", 
-    6:"https://rss.nytimes.com/services/xml/rss/nyt/World.xml", 
-    7:"https://feeds.npr.org/1001/rss.xml", 
-    8:"https://www.reddit.com/r/news/.rss", 
-    9:"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15", 
-    10:"https://feeds.a.dj.com/rss/RSSWorldNews.xml",
-    11:"https://threatpost.com/feed/",
-    12:"https://www.bleepingcomputer.com/feed/",
-    13:"https://www.reddit.com/r/netsec/.rss"
+    1: {'Source':'BBC News',                                'URL':"http://feeds.bbci.co.uk/news/rss.xml?edition=us"}, 
+    2: {'Source':'CNN Top Stories',                         'URL':"http://rss.cnn.com/rss/cnn_topstories.rss"}, 
+    3: {'Source':'ESPN',                                    'URL':"https://www.espn.com/espn/rss/news"}, 
+    4: {'Source':'Fox News',                                'URL':"http://feeds.foxnews.com/foxnews/latest/?feed=rss"}, 
+    5: {'Source':'LifeHacker',                              'URL':"https://lifehacker.com/rss"}, 
+    6: {'Source':'New York Times',                          'URL':"https://rss.nytimes.com/services/xml/rss/nyt/World.xml"},
+    7: {'Source':'NPR Top Stories',                         'URL':"https://feeds.npr.org/1001/rss.xml"}, 
+    8: {'Source':'Reddit r/News',                           'URL':"https://www.reddit.com/r/news/.rss"}, 
+    9: {'Source':'Reuters Financial',                       'URL':"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15"}, 
+    10: {'Source':'Wall Street Journal - World News',       'URL':"https://feeds.a.dj.com/rss/RSSWorldNews.xml"},
+    11: {'Source':'Threatpost',                             'URL':"https://threatpost.com/feed/"},
+    12: {'Source':'Bleeping Computer',                      'URL':"https://www.bleepingcomputer.com/feed/"},
+    13: {'Source':'Reddit r/NetSec',                        'URL':"https://www.reddit.com/r/netsec/.rss"}
 }
 
 # Function to parse and print feed articles
@@ -96,27 +96,34 @@ def parseFeed(feedList, numPosts):
             print ("[No Link]\n")
 
 # Function to display menu and obtain user selection
+#def getInput():
+#    menu_choice = input("""
+#    Menu
+#    0. Custom URL
+#    1. BBC News
+#    2. CNN Top Stories
+#    3. ESPN
+#    4. Fox News - Latest
+#    5. LifeHacker
+#    6. New York Times
+#    7. NPR Top Stories
+#    8. Reddit r/news
+#    9. Reuters Financial News
+#    10. Wall Street Journal - World News
+#    11. Threatpost
+#    12. Bleeping Computer - Latest
+#    13. Reddit r/NetSec
+#    Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): """)
+#
+#    return menu_choice
+
 def getInput():
-    menu_choice = input("""
-    Menu
-    0. Custom URL
-    1. BBC News
-    2. CNN Top Stories
-    3. ESPN
-    4. Fox News - Latest
-    5. LifeHacker
-    6. New York Times
-    7. NPR Top Stories
-    8. Reddit r/news
-    9. Reuters Financial News
-    10. Wall Street Journal - World News
-    11. Threatpost
-    12. Bleeping Computer - Latest
-    13. Reddit r/NetSec
-    Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): """)
-
+    print("Menu")
+    for key in feeds:
+        print(key, ":", feeds[key])
+    menu_choice = input("Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): ")
     return menu_choice
-
+  
 # Check for arguments in the cli
 # Usage: python3 PythonFeedReader.py [url_of_rss_feed]
 # Example: python3 PythonFeedReader.py https://threatpost.com/feed/
