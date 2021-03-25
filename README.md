@@ -35,7 +35,7 @@ To use the program with pre-built URLs:
 python3 PythonFeedReader.py
 ```
 
-## Current (01/2020) menu of pre-built options:
+## Current (03/2021) menu of pre-built options:
 
 1. BBC News
 2. CNN Top Stories
@@ -48,6 +48,8 @@ python3 PythonFeedReader.py
 9. Reuters Financial News
 10. Wall Street Journal - World News
 11. Threatpost
+12. Bleeping Computer
+13. Reddit r/netsec
 
 # Disclaimer
 This project was inspired by the Mr. Robot television series. Feel free to use it as you see fit! <3
