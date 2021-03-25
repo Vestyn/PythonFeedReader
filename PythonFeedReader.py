@@ -10,7 +10,7 @@ import sys                  # Used to obtain arguments from the cli
 #           Create advanced menu for feed topics (finance, world news, security news, etc.) 
 
 # Banner and welcome message
-print("""
+print('''
 ..................................................................................................................................................
 ..#####...##..##..######..##..##...####...##..##..........######..######..######..#####...........#####...######...####...#####...######..#####...
 ..##..##...####.....##....##..##..##..##..###.##..........##......##......##......##..##..........##..##..##......##..##..##..##..##......##..##..
@@ -24,106 +24,106 @@ It's purpose (for now) is to print the top 5 stories from a given RSS feed.
 I plan on expanding this project a bit more to include some additional functionality and ease-of-use. 
 Stay tuned! 
 -V
-""")
+''')
 
-# Dictionary to contain default RSS feed URLs
+# Dictionary to contain built-in RSS feed URLs
+# Key:Value format: 'Feed ID':'Feed URL'
 feeds = {
-    1: {'Source':'BBC News',                                'URL':"http://feeds.bbci.co.uk/news/rss.xml?edition=us"}, 
-    2: {'Source':'CNN Top Stories',                         'URL':"http://rss.cnn.com/rss/cnn_topstories.rss"}, 
-    3: {'Source':'ESPN',                                    'URL':"https://www.espn.com/espn/rss/news"}, 
-    4: {'Source':'Fox News',                                'URL':"http://feeds.foxnews.com/foxnews/latest/?feed=rss"}, 
-    5: {'Source':'LifeHacker',                              'URL':"https://lifehacker.com/rss"}, 
-    6: {'Source':'New York Times',                          'URL':"https://rss.nytimes.com/services/xml/rss/nyt/World.xml"},
-    7: {'Source':'NPR Top Stories',                         'URL':"https://feeds.npr.org/1001/rss.xml"}, 
-    8: {'Source':'Reddit r/News',                           'URL':"https://www.reddit.com/r/news/.rss"}, 
-    9: {'Source':'Reuters Financial',                       'URL':"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15"}, 
-    10: {'Source':'Wall Street Journal - World News',       'URL':"https://feeds.a.dj.com/rss/RSSWorldNews.xml"},
-    11: {'Source':'Threatpost',                             'URL':"https://threatpost.com/feed/"},
-    12: {'Source':'Bleeping Computer',                      'URL':"https://www.bleepingcomputer.com/feed/"},
-    13: {'Source':'Reddit r/NetSec',                        'URL':"https://www.reddit.com/r/netsec/.rss"}
+    1:"http://feeds.bbci.co.uk/news/rss.xml?edition=us",                # BBC News
+    2:"http://rss.cnn.com/rss/cnn_topstories.rss",                      # CNN
+    3:"https://www.espn.com/espn/rss/news",                             # ESPN
+    4:"http://feeds.foxnews.com/foxnews/latest/?feed=rss",              # Fox News
+    5:"https://lifehacker.com/rss",                                     # Lifehacker
+    6:"https://rss.nytimes.com/services/xml/rss/nyt/World.xml",         # New York Times - World News
+    7:"https://feeds.npr.org/1001/rss.xml",                             # NPR News
+    8:"https://www.reddit.com/r/news/.rss",                             # Reddit r/News
+    9:"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",   # Reuters Financial News
+    10:"https://feeds.a.dj.com/rss/RSSWorldNews.xml",                   # Wall Street Journal - World News
+    11:"https://threatpost.com/feed/",                                  # Threatpost
+    12:"https://www.bleepingcomputer.com/feed/",                        # Bleeping Computer
+    13:"https://www.reddit.com/r/netsec/.rss"                           # Reddit r/NetSec
 }
 
 # Function to parse and print feed articles
 def parseFeed(feedList, numPosts):
     # Print the feed title
     if 'title' in feedList.feed:
-        print ("\nTitle: " + feedList.feed.title)
+        print('\nTitle: ' + feedList.feed.title)
     else:
-        print ("\n[No Title]")
+        print('\n[No Title]')
 
     # Print the feed URL
     if 'link' in feedList.feed:
-        print ("Link: " + feedList.feed.link)
+        print('Link: ' + feedList.feed.link)
     else:
-        print ("[No Link]")
+        print('[No Link]')
 
     # Print the feed Description
     if 'description' in feedList.feed:
-        print ("Description: " + feedList.feed.description + "\n")
+        print('Description: ' + feedList.feed.description + '\n')
     else:
-        print ("[No Description]\n")
+        print('[No Description]\n')
 
     # Loop to display 'numPosts' number of articles
     for i in range(numPosts):
         # Print entry title
         if 'title' in feedList.entries[i]:
-            print (str(i + 1) + ": " + feedList.entries[i].title)
+            print(str(i + 1) + ': ' + feedList.entries[i].title)
         else:
-            print ("[No Title]")
+            print('[No Title]')
 
         # Print entry publish date
         if 'published' in feedList.entries[i]:
-            print ("Date: " + feedList.entries[i].published)
+            print('Date: ' + feedList.entries[i].published)
         else:
-            print ("[No Publish Date]")
+            print('[No Publish Date]')
 
         # Print entry category
         if 'category' in feedList.entries[i]:
-            print ("Category: " + feedList.entries[i].category)
+            print('Category: ' + feedList.entries[i].category)
         else:
-            print ("[No Category]")
+            print('[No Category]')
 
         # Print entry summary
         if 'summary' in feedList.entries[i]:
-            print ("Summary: " + feedList.entries[i].summary)
+            print('Summary: ' + feedList.entries[i].summary)
         else:
-            print ("[No Summary]")
+            print('[No Summary]')
 
         # Print entry URL
         if 'link' in feedList.entries[i]:
-            print ("Link: " + feedList.entries[i].link + "\n")
+            print('Read More: ' + feedList.entries[i].link + '\n')
         else:
-            print ("[No Link]\n")
+            print('[No Link]\n')
+
+# Prints the menu of built-in feeds
+def menu():
+    print('''
+    Built-in Feed Menu
+
+    0.  Custom URL (In progress)
+    1.  BBC News
+    2.  CNN Top Stories
+    3.  ESPN
+    4.  Fox News - Latest
+    5.  LifeHacker
+    6.  New York Times
+    7.  NPR Top Stories
+    8.  Reddit r/news
+    9.  Reuters Financial News
+    10. Wall Street Journal - World News
+    11. Threatpost
+    12. Bleeping Computer - Latest
+    13. Reddit r/NetSec
+    ''')
 
 # Function to display menu and obtain user selection
-#def getInput():
-#    menu_choice = input("""
-#    Menu
-#    0. Custom URL
-#    1. BBC News
-#    2. CNN Top Stories
-#    3. ESPN
-#    4. Fox News - Latest
-#    5. LifeHacker
-#    6. New York Times
-#    7. NPR Top Stories
-#    8. Reddit r/news
-#    9. Reuters Financial News
-#    10. Wall Street Journal - World News
-#    11. Threatpost
-#    12. Bleeping Computer - Latest
-#    13. Reddit r/NetSec
-#    Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): """)
-#
-#    return menu_choice
-
 def getInput():
-    print("Menu")
-    for key in feeds:
-        print(key, ":", feeds[key])
-    menu_choice = input("Enter the number of the RSS feed you want to view ('exit' or CTRL+C to exit): ")
-    return menu_choice
-  
+    menu()
+    menu_choice = input('Enter the number of the RSS feed you want to view ("exit" or CTRL+C to exit): ')
+    num_feeds = input('How many articles would you like to view? (Default is 5): ')
+    return menu_choice, num_feeds
+      
 # Check for arguments in the cli
 # Usage: python3 PythonFeedReader.py [url_of_rss_feed]
 # Example: python3 PythonFeedReader.py https://threatpost.com/feed/
@@ -132,7 +132,7 @@ if len(sys.argv) > 1:
     argument_feed = feedparser.parse(str(sys.argv[1]))
 
     # Prompt user for custom feed_number variable
-    number_of_articles = int(input("Number of feeds to view: "))
+    number_of_articles = int(input('Number of feeds to view: '))
     
     # Print the feed title, URL, and 'number_of_articles' amount of articles
     parseFeed(argument_feed, number_of_articles)
@@ -141,24 +141,33 @@ else:
     choice = getInput()
 
     # Create a loop for continuous program use
-    while choice != "exit":
+    while choice != 'exit':
         try:
-            if int(choice) in range(len(feeds) + 1):
-                # parseFeed params = feed, numFeeds
-                parseFeed(feedparser.parse(feeds[int(choice)]), 5)
-                choice = getInput()
+            if int(choice[0]) in range(len(feeds) + 1):
+                if choice[1] is "":
+                    # parseFeed params = feed, numFeeds
+                    parseFeed(feedparser.parse(feeds[int(choice[0])]), 5)
+                    choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
+                    if choice is "y":
+                        choice = getInput()
+                else:
+                    parseFeed(feedparser.parse(feeds[int(choice[0])]), int(choice[1]))
+                    choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
+                    if choice is "y":
+                        choice = getInput()
             else:
                 # Error handling: Request new entry
-                print ("\nERROR! Invalid input! Please enter an integer or type 'exit' to exit")
-                print ("\nRedisplaying menu...")
+                print('\nERROR! Invalid input! Please enter an integer or type "exit" to exit')
+                print('\nRedisplaying menu...')
                 # Redisplay menu
                 choice = getInput()
         except:
              # Error handling: Request new entry
-                print ("Exception triggered...")
-                #print ("\nERROR! Invalid input! Please enter an integer or type 'exit' to exit")
-                #print ("\nRedisplaying menu...")
-                # Redisplay menu
-                choice = getInput()
+                print('''
+                Exception triggered. Could be a bad URL or invalid number of articles.
+                Check your URL or try changing the number of articles to a smaller number.
+                Exiting program.
+                ''')
+                exit()
             
 # Thanks for stopping by! <3
