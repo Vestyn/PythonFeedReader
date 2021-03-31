@@ -6,6 +6,8 @@ import sys                  # Used to obtain arguments from the cli
 #           Expand RSS feed library (Maybe find a library online to import feed urls from?)
 #           Create local feed database? (Users can utlize a local database containing a list of feed urls, allowing them to customize feeds)
 #               Create empty 'feeds' dictionary and append it by iterating through a local file containing a custom list of feed URLs
+#                   .opml File?
+#                   .txt File?
 #           Create advanced menu for feed topics (finance, world news, security news, etc.) 
 
 # Banner and welcome message
@@ -136,10 +138,24 @@ if len(sys.argv) > 1:
     argument_feed = feedparser.parse(str(sys.argv[1]))
 
     # Prompt user for custom feed_number variable
-    number_of_articles = int(input('Number of feeds to view: '))
+    number_of_articles = input('Number of feeds to view: ')
     
-    # Print the feed title, URL, and 'number_of_articles' amount of articles
-    parseFeed(argument_feed, number_of_articles)
+    # Exception handling
+    try:
+        # Check for custom number of articles
+        if number_of_articles != '':
+            # Print the feed title, URL, and 'number_of_articles' amount of articles
+            parseFeed(argument_feed, number_of_articles)
+        else:
+            # Use default number of articles (5)
+            parseFeed(argument_feed, 5)
+    except:
+        # Error message
+        print('''
+            Exception triggered. Could be a bad URL or invalid number of articles.
+            Check your URL or try changing the number of articles to a smaller number.
+            Exiting program.
+        ''')
 else:
     # Display menu and prompt for user selection
     choice = getInput()
