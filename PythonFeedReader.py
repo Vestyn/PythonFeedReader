@@ -29,21 +29,21 @@ Stay tuned!
 
 # Dictionary to contain built-in RSS feed URLs
 # Key:Value format: 'Feed ID':'Feed URL'
-feeds = {
-    1:"http://feeds.bbci.co.uk/news/rss.xml?edition=us",                # BBC News
-    2:"http://rss.cnn.com/rss/cnn_topstories.rss",                      # CNN
-    3:"https://www.espn.com/espn/rss/news",                             # ESPN
-    4:"http://feeds.foxnews.com/foxnews/latest/?feed=rss",              # Fox News
-    5:"https://lifehacker.com/rss",                                     # Lifehacker
-    6:"https://rss.nytimes.com/services/xml/rss/nyt/World.xml",         # New York Times - World News
-    7:"https://feeds.npr.org/1001/rss.xml",                             # NPR News
-    8:"https://www.reddit.com/r/news/.rss",                             # Reddit r/News
-    9:"https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",   # Reuters Financial News
-    10:"https://feeds.a.dj.com/rss/RSSWorldNews.xml",                   # Wall Street Journal - World News
-    11:"https://threatpost.com/feed/",                                  # Threatpost
-    12:"https://www.bleepingcomputer.com/feed/",                        # Bleeping Computer
-    13:"https://www.reddit.com/r/netsec/.rss"                           # Reddit r/NetSec
-}
+feeds = [
+    "http://feeds.bbci.co.uk/news/rss.xml?edition=us",                # BBC News
+    "http://rss.cnn.com/rss/cnn_topstories.rss",                      # CNN
+    "https://www.espn.com/espn/rss/news",                             # ESPN
+    "http://feeds.foxnews.com/foxnews/latest/?feed=rss",              # Fox News
+    "https://lifehacker.com/rss",                                     # Lifehacker
+    "https://rss.nytimes.com/services/xml/rss/nyt/World.xml",         # New York Times - World News
+    "https://feeds.npr.org/1001/rss.xml",                             # NPR News
+    "https://www.reddit.com/r/news/.rss",                             # Reddit r/News
+    "https://ir.thomsonreuters.com/rss/news-releases.xml?items=15",   # Reuters Financial News
+    "https://feeds.a.dj.com/rss/RSSWorldNews.xml",                    # Wall Street Journal - World News
+    "https://threatpost.com/feed/",                                   # Threatpost
+    "https://www.bleepingcomputer.com/feed/",                         # Bleeping Computer
+    "https://www.reddit.com/r/netsec/.rss"                            # Reddit r/NetSec
+]
 
 # Function to parse and print feed articles
 def parseFeed(feedList, numPosts):
@@ -117,6 +117,58 @@ def menu():
     12. Bleeping Computer - Latest
     13. Reddit r/NetSec
     ''')
+
+def topics_menu():
+    print('''
+    Welcome! Please select a news topic:
+
+    1. Top News Stories
+    2. World 
+    3. Finance
+    4. Sports
+    5. Tech
+    6. Health
+    7. Education
+    8. Travel
+    ''')
+
+def world_submenu():
+    # World Governments
+    # Environmental Science
+    # Space Stuff
+    print("In Progress...")
+
+def finance_submenu():
+    # Stonks
+    # US Fincance
+    # Crypto
+    print("In Progress...")
+
+def sports_submenu():
+    # Basketball
+    # Football
+    # Soccer
+    # Baseball
+    # General
+    print("In Progress...")
+
+def tech_submenu():
+    # Latest
+    # Security
+    print("In Progress...")
+
+def health_submenu():
+    # ???
+    print("In Progress...")
+
+def edu_submenu():
+    # ???
+    print("In Progress...")
+
+def travel_submenu():
+    # ???
+    print("In Progress...")
+
 
 # Function to display menu and obtain user selection
 def getInput():
@@ -197,10 +249,10 @@ else:
                         choice = getInput()
 
                 # Checks for default number of articles with built-in menu_choice     
-                elif choice [1] == "":
+                elif choice[1] == "":
 
                     # Use default value of 5 for numFeeds
-                    parseFeed(feedparser.parse(feeds[int(choice[0])]), 5)
+                    parseFeed(feedparser.parse(feeds[int(choice[0]) - 1]), 5)
 
                     # Prompt user to continue or terminate program
                     choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
@@ -212,7 +264,7 @@ else:
                 else:
 
                     # Use custom value for numFeeds
-                    parseFeed(feedparser.parse(feeds[int(choice[0])]), int(choice[1]))
+                    parseFeed(feedparser.parse(feeds[int(choice[0]) - 1  ]), int(choice[1]))
 
                     # Prompt user to continue or terminate program
                     choice = input('Would you like to select a different feed? ("y" for Yes or "exit" to exit): ')
